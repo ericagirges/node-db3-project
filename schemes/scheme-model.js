@@ -29,3 +29,11 @@ function add(scheme) {
 function update(id, changes) {
   return db("schemes").where({ id }).update(changes);
 }
+
+function remove(id) {
+    return db("schemes").where({ id }).del();
+}
+
+function findSteps(id) {
+    return db("steps").where("scheme_id", id);
+}
