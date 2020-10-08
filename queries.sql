@@ -14,5 +14,14 @@ where [Order].orderDate < "2012-08-09"
 order by [Order].orderDate
 
 -- Display the name and quantity of the products ordered in order with Id 10251. Sort by ProductName. Shows 3 records.
+select Product.productName, OrderDetail.quantity
+from OrderDetail 
+left join Product on OrderDetail.productId = Product.id
+where OrderDetail.orderId = 10251
+order by Product.productName
 
 -- Display the OrderID, Customer's Company Name and the employee's LastName for every order. All columns should be labeled clearly. Displays 16,789 records.
+select [Order].id, Customer.companyName, Employee.lastName
+from [Order]
+join Customer on Customer.Id = [Order].customerId
+join Employee on Employee.Id = [Order].employeeId
